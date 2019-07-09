@@ -1,5 +1,10 @@
 <?php
-$url = isset($_GET['url']) ? urldecode($_GET['url']) : 'https://example.com';
+$url = 'https://example.com';
+if (isset($_GET['url']) && !empty($_GET['url'])) {
+	$url = urldecode($_GET['url']);
+} else if (isset($_GET['legacy_url']) && !empty($_GET['legacy_url'])) {
+	$url = $_GET['legacy_url'];
+}
 ?>
 <html>
 	<head>
